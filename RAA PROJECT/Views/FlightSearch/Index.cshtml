@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+
+    <!-- Inject Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0px;
+            .top-section
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #47143D;
+            padding: 20px;
+            text-align: center;
+        }
+
+            header h1 {
+                color: #fca311;
+                margin: 0;
+                font-size: 24px;
+            }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #47143D;
+            padding: 10px 0;
+        }
+
+            nav a {
+                color: #ffffff;
+                text-decoration: none;
+                margin: 0 15px;
+                font-size: 12.5px;
+                padding: 10px 15px;
+                border-radius: 50px;
+                transition: background-color 0.3s ease;
+                border: 2px solid #ffffff; /* Add a white border around each link */
+            }
+
+                nav a:hover,
+                nav a.active {
+                    background-color: #fca311;
+                    color: #000;
+                    border: none; /* Remove the white border on hover and active state */
+                }
+
+        container {
+            background-color: #47143D;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* Top Section Styles */
+        .top-section {
+            background-color: #47143D;
+            padding: 40px 20px;
+            color: #ffffff;
+            margin-left: -16%;
+            width: 132%
+        }
+
+            .top-section h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+
+        .flight-search {
+            background-color: #47143D;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-inline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .form-inline .form-group {
+                flex: 1;
+                min-width: 150px;
+            }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background-color: #fca311;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: stretch;
+        }
+
+            .btn-primary:hover {
+                background-color: #d98c0a;
+            }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+            .checkbox-group label {
+                font-size: 14px;
+            }
+
+        /* Bottom Section Styles */
+        .bottom-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+            .bottom-section .feature-box {
+                display: flex;
+                justify-content: space-around;
+                gap: 20px;
+            }
+
+        .feature {
+            background-color: #47143D;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            flex: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-section h2 {
+            text-align: left;
+            margin-bottom: 0px;
+            font-size: 35px;
+            margin-left: 11%;
+        }
+
+        .feature h3 {
+            margin: 0 0 10px;
+        }
+
+        .dropdown-content {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: absolute;
+            z-index: 1000;
+            width: 250px;
+        }
+
+        .dropdown-section {
+            margin-bottom: 15px;
+        }
+
+            .dropdown-section h4 {
+                margin: 0 0 10px;
+                font-size: 16px;
+            }
+
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .counter button {
+                width: 30px;
+                height: 30px;
+                background-color: #fca311;
+                border: none;
+                color: #000;
+                font-size: 18px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .counter span {
+                font-size: 18px;
+                width: 20px;
+                text-align: center;
+            }
+
+        #CabinClass {
+            cursor: pointer;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Parkinsans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .top-section {
+            background-color: #47143D;
+            padding: 65px 20px;
+            color: #ffffff;
+        }
+
+        .bottom-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Adjust spacing between rows */
+        }
+
+
+
+        .accordion-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px; /* Adjust spacing between columns */
+        }
+
+        .accordion-item {
+            flex: 1;
+            padding-bottom: 10px; /* Add some spacing under the line */
+            border: 0px;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500; /* Semi-bold */
+            padding: 10px 0;
+        }
+
+        .dropdown-icon {
+            font-size: 1.2em;
+            font-weight: normal; /* Not bold */
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+            padding-left: 10px;
+        }
+
+
+            .accordion-content.open {
+                max-height: 300px; /* Adjust based on content */
+                padding-top: 10px;
+                opacity: 1; /* Smoothly fade in */
+                transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease; /* Combine height and fade */
+            }
+
+        .section-title {
+            margin-top: -1%;
+            font-size: 2rem;
+            margin-left: -7%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-section">
+        <h2>Find your flight</h2>
+        <div class="container">
+            <div class="flight-search">
+                <form action="/search-flights" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="From">From</label>
+                        <input type="text" id="From" name="From" class="form-control" placeholder="Bengaluru (BLR)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="To">To</label>
+                        <input type="text" id="To" name="To" class="form-control" placeholder="London Heathrow (LHR)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DepartDate">Depart</label>
+                        <input type="date" id="DepartDate" name="DepartDate" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ReturnDate">Return</label>
+                        <input type="date" id="ReturnDate" name="ReturnDate" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CabinClass">Travelers and Cabin</label>
+                        <select id="CabinClass" name="CabinClass" class="form-control">
+                            <option value="Economy">1 Adult, Economy</option>
+                            <option value="Business">Business</option>
+                            <option value="FirstClass">First Class</option>
+                        </select>
+                    </div>
+
+
+
+                </form>
+
+                <div class="checkbox-group">
+                    <div>
+                        <input type="checkbox" id="NearbyFrom" name="NearbyFrom">
+                        <label for="NearbyFrom">Add nearby airports</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="NearbyTo" name="NearbyTo">
+                        <label for="NearbyTo">Direct flights</label>
+                    </div>
+                </div>
+                <nav>
+                    <a href="#">Student</a>
+                    <a href="#">Senior Citizen</a>
+                    <a href="#">Armed Forces</a>
+                    <a href="#">Doctors and Nurses</a>
+                </nav>
+
+                <button type="submit" class="btn-primary">Search</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        <div class="container">
+            <div class="feature-box">
+                <div class="feature">
+                    <h3>Explore Everywhere</h3>
+                    <p>Find the best deals to any destination.</p>
+                </div>
+                <div class="feature">
+                    <h3>Hotels</h3>
+                    <p>Stay in the best accommodations worldwide.</p>
+                </div>
+                <div class="feature">
+                    <h3>Car Hire</h3>
+                    <p>Rent a car for your next adventure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image placed here -->
+    <img src="@Url.Content("~/images/image1.png")" alt="image1" class="image1-class" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+
+    @*  <div class="image-slider" >
+    <div class="image-slider-wrapper">
+    <img src="@Url.Content("~/images/image1.png")" alt="Image 1" class="slider-image" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+    <img src="@Url.Content("~/images/image2.png")" alt="Image 2" class="slider-image" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+    <img src="@Url.Content("~/images/image3.png")" alt="Image 3" class="slider-image" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+    <img src="@Url.Content("~/images/image4.png")" alt="Image 4" class="slider-image" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+    <img src="@Url.Content("~/images/image5.png")" alt="Image 5" class="slider-image" style="width: 100%;height: auto;/* padding: 0%; */margin-top: 1%;" />
+    </div>
+    </div> *@
+    <div class="container" style="margin:6%">
+        <div class="booking-flights-container" style="margin:6%">
+            <h2 class="section-title">Booking flights with Travelling</h2>
+            <div class="accordion" style="margin-top: 4%; margin-left:-6%;">
+                <div class="accordion-row">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            How does Traveller App work?
+                            <span class="dropdown-icon"> </span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>We’re a flight, car hire, and hotel search engine...</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Does Traveller App do hotels too?
+                            <span class="dropdown-icon"> </span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Yes! You can use the same magic that powers...</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="accordion-row">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            How can I find the cheapest flight?
+                            <span class="dropdown-icon"> </span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>You can filter flights by price and timing...</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            What’s a Price Alert?
+                            <span class="dropdown-icon"> </span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>A Price Alert notifies you when prices change...</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer style="background-color: #47143D; color: #fff; padding: 25px 0; font-family: Arial, sans-serif; width: 128%; margin-left: -14%;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 20px;">
+
+            <!-- Language and Currency Selector -->
+            <div style="margin-bottom: 20px;">
+                <button style="background-color: #47143D; border: none; color: #fff; padding: 10px 2px; border-radius: 5px; cursor: pointer;">
+                    India · English (UK) · ₹ INR
+                </button>
+            </div>
+
+            <!-- Links Section -->
+            <div style="display: flex; flex-wrap: wrap; gap: 50px; width: 100%; justify-content: space-between;">
+                <!-- Added equal spacing with gap -->
+                <!-- Group 1 -->
+                <div style="flex: 1; min-width: 150px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Added gap between links -->
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Help</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Privacy Settings</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Log in</a></li>
+                    </ul>
+                </div>
+
+                <!-- Group 2 -->
+                <div style="flex: 1; min-width: 150px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Added gap between links -->
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Cookie policy</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Privacy policy</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Terms of service</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Company Details</a></li>
+                    </ul>
+                </div>
+
+                <!-- Group 3 -->
+                <div style="flex: 1; min-width: 150px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Added gap between links -->
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Explore</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Company</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Partners</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Trips</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">International Sites</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer Bottom Text -->
+        <div style="text-align: center; padding: 20px 0; font-size: 14px;">
+            <p>Cheap flight booking from anywhere, to everywhere</p>
+            <p>&copy; SteamersBitCode Ltd 12-2024</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+        document.querySelectorAll(".accordion-header").forEach((header) => {
+            header.addEventListener("click", () => {
+                const content = header.nextElementSibling; // Target the .accordion-content
+                const icon = header.querySelector(".dropdown-icon"); // Target the dropdown icon
+
+                // Toggle the clicked content
+                if (content.classList.contains("open")) {
+                    content.classList.remove("open");
+                    content.style.maxHeight = null;
+                    icon.textContent = ' '; // Change icon to down arrow
+                } else {
+                    content.classList.add("open");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = ' '; // Change icon to up arrow
+                }
+            });
+        });
+
+
+    </script>
+
+
+</body>
+</html>
